@@ -4,10 +4,17 @@ from datetime import datetime
 import re
 import openai
 from openai import OpenAI, OpenAIError
-from openai.resources import chat, images
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
 import requests
+
+
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 def search_duckduckgo(query):
     url = f"https://api.duckduckgo.com/?q={query}&format=json&no_html=1"
@@ -22,8 +29,6 @@ def search_duckduckgo(query):
     except Exception:
         return "⚠️ Ошибка при обращении к DuckDuckGo."
 
-TELEGRAM_TOKEN = '8138969116:AAFa3n38GOqkfQW-UfpMBudTzxW9SKCSknQ'
-OPENAI_API_KEY = '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'
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
