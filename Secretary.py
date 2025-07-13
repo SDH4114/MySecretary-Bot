@@ -230,3 +230,5 @@ async def main():
 if __name__ == "__main__":
     nest_asyncio.apply()
     asyncio.get_event_loop().run_until_complete(main())
+
+# это для новой версии удалить потом
